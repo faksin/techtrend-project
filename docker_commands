@@ -1,0 +1,35 @@
+## Docker commands used to build the application 
+# TODO: docker build -f Dockerfile -t techtrends .
+
+## Docker commands used to run the application
+# TODO: docker run -d -p 7111:3111 techtrends
+
+## Docker commands used to get the application logs
+# TODO: docker logs 39ad2d0855ed
+
+## Logs from the container running the TechTrends application
+# TODO: paste logs from the Docker container 
+ * Serving Flask app 'app' (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+WARNING:werkzeug:2023-02-20 17:47:23,301- * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+INFO:werkzeug:2023-02-20 17:47:23,301- * Running on http://172.17.0.2:3111/ (Press CTRL+C to quit)
+INFO:werkzeug:2023-02-20 17:47:40,218-172.17.0.1 - - [20/Feb/2023 17:47:40] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:2023-02-20 17:47:40,236-172.17.0.1 - - [20/Feb/2023 17:47:40] "GET /static/css/main.css HTTP/1.1" 200 -
+INFO:root:2023-02-20 17:49:33,426-Article CNCF Cloud Native Interactive Landscape retrieved!
+INFO:werkzeug:2023-02-20 17:49:33,432-172.17.0.1 - - [20/Feb/2023 17:49:33] "GET /4 HTTP/1.1" 200 -
+INFO:werkzeug:2023-02-20 17:49:33,442-172.17.0.1 - - [20/Feb/2023 17:49:33] "GET /static/css/main.css HTTP/1.1" 304 -
+INFO:werkzeug:2023-02-20 17:49:36,343-172.17.0.1 - - [20/Feb/2023 17:49:36] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:2023-02-20 17:49:36,355-172.17.0.1 - - [20/Feb/2023 17:49:36] "GET /static/css/main.css HTTP/1.1" 304 -
+INFO:root:2023-02-20 17:49:38,638-About Us page is retrieved
+INFO:werkzeug:2023-02-20 17:49:38,640-172.17.0.1 - - [20/Feb/2023 17:49:38] "GET /about HTTP/1.1" 200 -
+INFO:werkzeug:2023-02-20 17:49:38,650-172.17.0.1 - - [20/Feb/2023 17:49:38] "GET /static/css/main.css HTTP/1.1" 304 -
+INFO:werkzeug:2023-02-20 17:49:41,003-172.17.0.1 - - [20/Feb/2023 17:49:41] "GET /create HTTP/1.1" 200 -
+INFO:werkzeug:2023-02-20 17:49:41,019-172.17.0.1 - - [20/Feb/2023 17:49:41] "GET /static/css/main.css HTTP/1.1" 304 -
+INFO:root:2023-02-20 17:49:53,438-New article is created with Title: Try new post
+INFO:werkzeug:2023-02-20 17:49:53,438-172.17.0.1 - - [20/Feb/2023 17:49:53] "POST /create HTTP/1.1" 302 -
+INFO:werkzeug:2023-02-20 17:49:53,444-172.17.0.1 - - [20/Feb/2023 17:49:53] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:2023-02-20 17:49:53,457-172.17.0.1 - - [20/Feb/2023 17:49:53] "GET /static/css/main.css HTTP/1.1" 304 -

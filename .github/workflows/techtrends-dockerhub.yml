@@ -1,0 +1,36 @@
+name: TechTrends - Package with Docker
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-push-action:
+    runs-on: ubuntu-latest
+
+    env:
+      TAG: $(date +%s)
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v4
+        with:
+          images: faksin/techtrends
+      
+      - name: Login to DockerHub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          dockerfile: Dockerfile
+          push: true
