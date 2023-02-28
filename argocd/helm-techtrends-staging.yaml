@@ -15,4 +15,3 @@ spec:
     path: helm
     repoURL: https://github.com/faksin/techtrend-project
     targetRevision: HEAD
-  syncPolicy: {}
