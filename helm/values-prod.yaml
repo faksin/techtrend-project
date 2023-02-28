@@ -5,7 +5,7 @@ service:
   port: 7111
 
 image:
-  repository: faksin/techtrends:main  
+  repository: faksin/techtrends  
   image pullPolicy: Always
 
 replicaCount: 5
