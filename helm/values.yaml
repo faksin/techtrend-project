@@ -3,7 +3,7 @@ namespace:
 
 image:
    repository: techtrends
-   tag: latest
+   tag: main
    PullPolicy: IfNotPresent
 
 replicaCount: 1
