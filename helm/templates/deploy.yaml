@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: techtrends
-          image: faksin/techtrends:latest
+          image: faksin/techtrends:main
           ports:
             - containerPort: 3111
           resources:
