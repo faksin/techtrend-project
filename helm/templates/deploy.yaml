@@ -2,9 +2,11 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: techtrends
-  namespace: sandbox
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: techtrends
 spec:
-  replicas: 1
+  replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
       app: techtrends
@@ -15,25 +17,24 @@ spec:
     spec:
       containers:
         - name: techtrends
-          image: faksin/techtrends:main
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
-            - containerPort: 3111
-          resources:
-            requests:
-              cpu: 250m
-              memory: 64Mi
-            limits:
-              cpu: 500m
-              memory: 128Mi
+            - name: http
+              containerPort: {{ .Values.containerPort }}
           livenessProbe:
             httpGet:
-              path: /healthz
-              port: 3111
+              path: {{ .Values.livenessProbe.path }}
+              port: {{ .Values.livenessProbe.port }}
             initialDelaySeconds: 30
-            periodSeconds: 10
+            periodSeconds: 15
           readinessProbe:
             httpGet:
-              path: /healthz
-              port: 3111
+              path: {{ .Values.readinessProbe.path }}
+              port: {{ .Values.readinessProbe.port }}
             initialDelaySeconds: 5
-            periodSeconds: 10
+            periodSeconds: 15
+          resources:
+{{ toYaml .Values.resources | indent 12 }}
+      imagePullSecrets:
+        - name: regcred

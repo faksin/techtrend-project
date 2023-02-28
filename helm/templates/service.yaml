@@ -2,14 +2,15 @@ apiVersion: v1
 kind: Service
 metadata:
   name: techtrends
-  namespace: sandbox
-spec:
-  type: ClusterIP
-  selector:
+  namespace: {{ .Values.namespace }}
+  labels:
     app: techtrends
+spec:
+  type: {{ .Values.service.type }}
   ports:
     - name: http
-      port: 4111
-      targetPort: 3111
-      protocol: TCP
-
+      port: {{ .Values.service.port }}
+      targetPort: {{ .Values.service.targetPort }}
+      protocol: {{ .Values.service.protocol }}
+  selector:
+    app: techtrends
