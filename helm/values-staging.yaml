@@ -1,25 +1,20 @@
-namespace: staging
+namespace:
+  name: staging 
+ 
 service:
   port: 5111
-  targetPort: 3111
-  protocol: TCP
   type: ClusterIP
+
 image:
-  repository: faksin/techtrends
-  tag: main
-  pullPolicy: IfNotPresent
+  repository: faksin/techtrends 
+
 replicaCount: 3
+
 resources:
   requests:
-    memory: "90Mi"
-    cpu: "300m"
+    cpu: 300m
+    memory: 90Mi
+
   limits:
-    memory: "128Mi"
-    cpu: "500m"
-containerPort: 3111
-livenessProbe:
-  path: /healthz
-  port: 3111
-readinessProbe:
-  path: /healthz
-  port: 3111
+    cpu: 500m
+    memory: 128Mi

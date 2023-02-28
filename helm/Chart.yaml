@@ -1,8 +1,10 @@
 apiVersion: v1
 name: techtrends
+description: Install a techtrends deployment
 keywords:
-  - techtrends
+- techtrends
+- techtrends
 version: 1.0.0
 maintainers:
-  - name: Fajar Mukhlisin
-    email: learning.fajar@gmail.com
+- name: arlisaputro
+  email: arli.saputro@gmail.com
