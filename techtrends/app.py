@@ -1,6 +1,7 @@
 import sqlite3
 import logging
 import json
+import sys
 
 from flask import Flask, jsonify, json, render_template, request, url_for, redirect, flash
 from werkzeug.exceptions import abort
@@ -98,8 +99,23 @@ def metrics():
     # return the JSON response with a 200 status code
     return jsonify(response), 200
 
+
+# set logger to handle STDOUT and STDERR 
+stdout_logger = logging.Logger(name="stdout_logger", level=logging.DEBUG)
+stderr_logger = logging.Logger(name="stderr_logger", level=logging.DEBUG)
+
+stdout_handler = logging.StreamHandler(stream=sys.stdout)
+stderr_handler = logging.StreamHandler(stream=sys.stderr)
+
+stdout_logger.addHandler(hdlr=stdout_handler)
+stderr_logger.addHandler(hdlr=stderr_handler)
+ # format output
+stdout_logger.info(sys.stdout)
+stderr_logger.info(sys.stderr)
+
 # logging configuration
 logging.basicConfig(level=logging.DEBUG, format='%(levelname)s:%(name)s:%(asctime)s-%(message)s')
+
 
 # start the application on port 3111
 if __name__ == "__main__":

@@ -3,19 +3,26 @@ namespace:
  
 service:
   port: 7111
+  targetPort: 3111
+  protocol: TCP
+  type: ClusterIP
 
 image:
   repository: faksin/techtrends  
   image pullPolicy: Always
   tag: main
-
 replicaCount: 5
-
 resources:
   requests:
-    cpu: 350m
-    memory: 128Mi
-
+    memory: "128Mi"
+    cpu: "350m"
   limits:
-    cpu: 500m
-    memory: 256Mi
+    memory: "256Mi"
+    cpu: "500m"
+containerPort: 3111
+livenessProbe:
+  path: /healthz
+  port: 3111
+readinessProbe:
+  path: /healthz
+  port: 3111

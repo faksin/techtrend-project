@@ -24,3 +24,22 @@ spec:
       - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
         imagePullPolicy: IfNotPresent
         name: techtrends
+        ports:
+           - name: http
+             containerPort: {{ .Values.containerPort }}
+        livenessProbe:
+          httpGet:
+            path: {{ .Values.livenessProbe.path }}
+            port: {{ .Values.livenessProbe.port }}
+          initialDelaySeconds: 30
+          periodSeconds: 15
+        readinessProbe:
+          httpGet:
+            path: {{ .Values.readinessProbe.path }}
+            port: {{ .Values.readinessProbe.port }}
+          initialDelaySeconds: 5
+          periodSeconds: 15
+        resources:
+{{ toYaml .Values.resources | indent 12 }}
+      imagePullSecrets:
+        - name: regcred
